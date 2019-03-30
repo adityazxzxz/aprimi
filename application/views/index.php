@@ -186,8 +186,8 @@
 			</div>
 			<div class="user-info">
 				<div class="greeting">Welcome</div>
-				<div class="username">John <span class="semi-bold">Smith</span></div>
-				<div class="status">Status<a href="#"><div class="status-icon green"></div>Committee</a></div>
+				<div class="username"><?php echo $this->session->userdata('name')?></div>
+				<div class="status">Status<a href="#"><div class="status-icon green"></div><?php echo $this->session->userdata('role')?></a></div>
 			</div>
 		</div>
 		<!-- END MINI-PROFILE -->
@@ -244,7 +244,8 @@
 					<li>
 						<a href="javascript:;"><span class="title">Folder 2</span><span class="arrow "></span></a>
 						<ul class="sub-menu">
-							<li><a href="javascript:;">Sub Folder 1</a></li>
+							<!-- <li><a href="javascript:;">Sub Folder 1</a></li> -->
+							<li><a href="<?php echo site_url()?>/folder_management">Sub Folder 1</a></li>
 						</ul>
 					</li>
 				</ul>
