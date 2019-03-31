@@ -6,6 +6,8 @@ class Agenda extends CI_Controller {
 		parent::__construct();
 		//load model
 		$this->load->model('Auth_model','auth');
+		$this->load->helper('auth_helper');
+		check_session();
 	}
 
 	public function index(){

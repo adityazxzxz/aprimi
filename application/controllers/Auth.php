@@ -5,6 +5,7 @@ class Auth extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		//load model
+		$this->load->helper('auth_helper');
 		$this->load->model('Auth_model','auth');
 	}
 	public function index()
@@ -18,12 +19,13 @@ class Auth extends CI_Controller {
 		$req = $this->auth->find_one($email,$pass);
 		if($req){
 			//to dashboard
+			$newsession = create_session($req->id);
 			$data = array(
 				'email'=>$email,
 				'name'=>$req->name,
 				'role'=>$req->role,
 				'logged_in'=>TRUE,
-				'session'=>$req->session
+				'session'=>$newsession
 			);
 			$this->session->set_userdata($data);
 			redirect('/home');
