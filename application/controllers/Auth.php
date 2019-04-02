@@ -21,6 +21,7 @@ class Auth extends CI_Controller {
 			//to dashboard
 			$newsession = create_session($req->id);
 			$data = array(
+				'user_id'=>$req->id,
 				'email'=>$email,
 				'name'=>$req->name,
 				'role'=>$req->role,

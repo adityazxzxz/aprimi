@@ -16,11 +16,19 @@ class Commitment extends CI_Controller {
 	}
 
 	public function add_commitment(){
+		$user_id = $this->session->userdata('user_id');
 		$name = $this->input->post('name');
 		$company = $this->input->post('company');
 		$confirm = $this->input->post('confirm');
 		$time = ($this->input->post('time')==="other") ? $this->input->post('other_time') : $this->input->post('time');
+
+		$exists = $this->commit->find('*',array('user_id'=>$user_id,'YEAR(created_at)'=>date('Y')));
+		if($exists){
+			$this->session->set_flashdata('error','Commitment this year already exist!');
+			return redirect('/commitment');
+		}
 		$req = $this->commit->create(array(
+			'user_id'=>$this->session->userdata('id'),
 			'name'=>$name,
 			'company'=>$company,
 			'confirmed'=>$confirm,

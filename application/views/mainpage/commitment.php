@@ -164,7 +164,7 @@
                                     <div class="form-group">
                                         <label for="name" class="form-label">Notes</label>
                                         <div class="controls">
-                                            <input type="text" class="form-control" name="name">
+                                            <input type="text" class="form-control" name="note">
                                         </div>
                                     </div>
                                     <div class="form-group text-right">
