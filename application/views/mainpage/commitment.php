@@ -5,8 +5,30 @@
 				  <p>You are here</p>  					 							
 				</li>     	 
 				<li><a href="#" class="active">Comitment</a></li>                    
-			</ul>
-			<div class="page-title">	
+            </ul>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <?php $error_msg = $this->session->flashdata('error'); if(!empty($error_msg)){ ?>
+                        <div class="alert alert-block alert-danger fade in">
+                            <button data-dismiss="alert" class="close close-sm" type="button">
+                                <i class="fa fa-times"></i>
+                            </button>
+                            <strong>Error!</strong> <?php  echo $error_msg; ?>
+                        </div>
+                    <?php } ?>
+
+                    <?php $ok_msg = $this->session->flashdata('success'); if(!empty($ok_msg)){ ?>
+                        <div class="alert alert-block alert-success fade in">
+                            <button data-dismiss="alert" class="close close-sm" type="button">
+                                <i class="fa fa-times"></i>
+                            </button>
+                            <strong>Success!</strong> <?php  echo $ok_msg; ?>
+                        </div>
+                    <?php } ?>
+
+                </div>
+            </div>
+            <div class="page-title">	
 				<i class="icon-custom-left"></i>
 				<h3>List of <span class="semi-bold">Committee Comitment</span></h3>		
 			</div>
@@ -96,7 +118,7 @@
                                 </div>
                                 <p>APRIMI will run the work program yearly, in order to manage the program done in timely manner, please inform your availability by fill the form below.</p>
                                 <br>
-                                <form action="#" method="POST">
+                                <form action="<?php echo site_url()?>/commitment/add_commitment" method="POST">
                                     <div class="form-group">
                                         <label for="name" class="form-label">Name</label>
                                         <div class="controls">
@@ -111,11 +133,11 @@
                                     </div>
                                     <div class="form-check">
                                         <label class="form-check-label">
-                                            <input type="radio" class="form-check-input" name="yes" id="" value="yes" checked>
+                                            <input type="radio" class="form-check-input" name="confirm" id="" value="yes" checked>
                                             Yes	I agree to join the APRIMI Committee
                                         </label>
                                         <label class="form-check-label">
-                                            <input type="radio" class="form-check-input" name="yes" id="" value="no">
+                                            <input type="radio" class="form-check-input" name="confirm" id="" value="no">
                                             No	I am not available to join the APRIMI Committee
                                         </label>
                                     </div>
@@ -125,17 +147,17 @@
                                         <label for="company" class="form-label">Time</label>
                                         <div class="controls">
                                             <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="yes" id="" value="yes" checked>
+                                                <input type="radio" class="form-check-input" name="time" id="" value="Weekdays after office hour" checked>
                                                 Weekdays after office hour
                                             </label>
                                             <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="yes" id="" value="no">
+                                                <input type="radio" class="form-check-input" name="time" id="" value="Weekend (Saturday)">
                                                 Weekend (Saturday)
                                             </label>
                                             <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="yes" id="" value="other">
+                                                <input type="radio" class="form-check-input" name="time" id="" value="other">
                                                 Other
-                                                <input type="text" name="" id="" class="form-control">
+                                                <input type="text" name="other_time" id="" class="form-control">
                                             </label>
                                         </div>
                                     </div>
@@ -146,7 +168,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group text-right">
-                                        <button type="button" class="btn btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
                                         <button type="button" class="btn btn-default">Cancel</button>
                                     </div>
                                 </form>
