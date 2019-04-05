@@ -7,16 +7,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
-    
+    <script src="<?php echo base_url()?>assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script> 
 	<link href="<?php echo base_url()?>assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen"/>
 	<link href="<?php echo base_url()?>assets/plugins/jquery-scrollbar/jquery.scrollbar.css" rel="stylesheet" type="text/css"/>
 	<link href="<?php echo base_url()?>assets/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 	<link href="<?php echo base_url()?>assets/plugins/boostrapv3/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+	<link href="<?php echo base_url()?>assets/plugins/bootstrap-datepicker/css/datepicker.min.css" rel="stylesheet" type="text/css"/>
 	<link href="<?php echo base_url()?>assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
 	<link href="<?php echo base_url()?>assets/css/animate.min.css" rel="stylesheet" type="text/css"/>
 	<link href="<?php echo base_url()?>assets/css/style.css" rel="stylesheet" type="text/css"/>
 	<link href="<?php echo base_url()?>assets/css/responsive.css" rel="stylesheet" type="text/css"/>
 	<link href="<?php echo base_url()?>assets/css/custom-icon-set.css" rel="stylesheet" type="text/css"/>
+	
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body class="">
 <!-- BEGIN HEADER -->
@@ -198,11 +201,55 @@
 			<li class="start active">
 				<a href="<?php echo site_url()?>/home">
 					<i class="icon-custom-home"></i>
+					<span class="title">Home</span>
+					<span class="selected"></span>
+					
+				</a>
+			</li>
+			<?php
+				$ses = $this->session->userdata('role');
+				if(!empty($ses) && $ses !== 'member'){
+			?>
+			<li class="start active">
+				<a href="<?php echo site_url()?>/dashboard">
+					<i class="icon-custom-home"></i>
 					<span class="title">Dashboard</span>
 					<span class="selected"></span>
 					
 				</a>
 			</li>
+			<li class="">
+				<a href="javascript:;">
+					<i class="fa fa-folder-open"></i>
+					<span class="title">Folder management</span>
+					<span class="arrow"></span>
+				</a>
+				<ul class="sub-menu">
+					<li><a href="javascript:;">Folder 1</a></li>
+					<li>
+						<a href="javascript:;"><span class="title">Folder 2</span><span class="arrow "></span></a>
+						<ul class="sub-menu">
+							<!-- <li><a href="javascript:;">Sub Folder 1</a></li> -->
+							<li><a href="<?php echo site_url()?>/folder_management">Sub Folder 1</a></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li class="">
+				<a href="<?php echo site_url()?>/commitment">
+					<i class="fa fa-pencil-square-o"></i>
+					<span class="title">Comitment</span>
+				</a>
+			</li>
+			<li class="">
+				<a href="<?php echo site_url()?>/agenda">
+					<i class="fa fa-pencil-square-o"></i>
+					<span class="title">Agenda</span>
+				</a>
+			</li>
+			<?php
+				}
+			?>
 			<!-- END SELECTED LINK -->
 			<!-- BEGIN BADGE LINK -->
 			<!-- <li class="">
@@ -233,29 +280,7 @@
 			</li> -->
 			<!-- END ONE LEVEL MENU -->
 			<!-- BEGIN TWO LEVEL MENU -->
-			<li class="">
-				<a href="javascript:;">
-					<i class="fa fa-folder-open"></i>
-					<span class="title">Folder management</span>
-					<span class="arrow"></span>
-				</a>
-				<ul class="sub-menu">
-					<li><a href="javascript:;">Folder 1</a></li>
-					<li>
-						<a href="javascript:;"><span class="title">Folder 2</span><span class="arrow "></span></a>
-						<ul class="sub-menu">
-							<!-- <li><a href="javascript:;">Sub Folder 1</a></li> -->
-							<li><a href="<?php echo site_url()?>/folder_management">Sub Folder 1</a></li>
-						</ul>
-					</li>
-				</ul>
-			</li>
-			<li class="">
-				<a href="<?php echo site_url()?>/commitment">
-					<i class="fa fa-pencil-square-o"></i>
-					<span class="title">Comitment</span>
-				</a>
-			</li>
+			
 			<!-- END TWO LEVEL MENU -->			
 		</ul>
 		<!-- END SIDEBAR MENU -->
@@ -458,7 +483,7 @@
 </div>
 <!-- END CONTENT --> 
 <!-- BEGIN CORE JS FRAMEWORK--> 
-<script src="<?php echo base_url()?>assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script> 
+
 <script src="<?php echo base_url()?>assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script> 
 <script src="<?php echo base_url()?>assets/plugins/boostrapv3/js/bootstrap.min.js" type="text/javascript"></script> 
 <script src="<?php echo base_url()?>assets/plugins/breakpoints.js" type="text/javascript"></script> 
@@ -469,14 +494,26 @@
 <script src="<?php echo base_url()?>assets/plugins/jquery-scrollbar/jquery.scrollbar.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url()?>assets/plugins/pace/pace.min.js" type="text/javascript"></script>  
 <script src="<?php echo base_url()?>assets/plugins/jquery-numberAnimate/jquery.animateNumbers.js" type="text/javascript"></script>
+<script src="<?php echo base_url()?>assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url()?>assets/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS --> 	
-
+<script src="<?php echo base_url()?>assets/js/support_ticket.js" type="text/javascript"></script>
 <!-- BEGIN CORE TEMPLATE JS --> 
 <script src="<?php echo base_url()?>assets/js/core.js" type="text/javascript"></script> 
 <script src="<?php echo base_url()?>assets/js/chat.js" type="text/javascript"></script> 
 <script src="<?php echo base_url()?>assets/js/demo.js" type="text/javascript"></script> 
 <!-- END CORE TEMPLATE JS --> 
-
+<!-- Date Picker -->
+  <!-- Date Picker -->
+   <script type="text/javascript">
+            $(document).ready(function () {
+            	$('#start_date').datepicker({
+            		format: 'yyyy-mm-dd',
+      autoclose: true,
+      todayHighlight: true,
+            	});
+            });
+        </script>
 <!-- END NEED TO WORK ON -->
 </body>
 </html>

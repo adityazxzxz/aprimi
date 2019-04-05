@@ -5,11 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <meta content="" name="description" />
 <meta content="" name="author" />
+
 <!-- BEGIN CORE CSS FRAMEWORK -->
 <link href="<?php echo base_url()?>assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen"/>
 <link href="<?php echo base_url()?>assets/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url()?>assets/plugins/boostrapv3/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url()?>assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url()?>assets/plugins/bootstrap-datepicker/css/datepicker.min.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url()?>assets/css/animate.min.css" rel="stylesheet" type="text/css"/>
 <!-- END CORE CSS FRAMEWORK -->
 <!-- BEGIN CSS TEMPLATE -->
