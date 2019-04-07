@@ -142,7 +142,7 @@
 							<li><a href="#">Normal Link</a></li>
 							<li><a href="#">Badge Link&nbsp;&nbsp;<span class="badge badge-important animated bounceIn">2</span></a></li>
 							<li class="divider"></li>                
-							<li><a href="#"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Separated Link</a></li>
+							<li><a href="<?php echo site_url()?>/auth/do_logout"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Logout</a></li>
 						</ul>
 					</li>
 					<!-- END SETTINGS -->
