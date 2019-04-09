@@ -18,6 +18,9 @@
 	<link href="<?php echo base_url()?>assets/css/style.css" rel="stylesheet" type="text/css"/>
 	<link href="<?php echo base_url()?>assets/css/responsive.css" rel="stylesheet" type="text/css"/>
 	<link href="<?php echo base_url()?>assets/css/custom-icon-set.css" rel="stylesheet" type="text/css"/>
+	<link href="<?php echo base_url()?>assets/plugins/summernote/dist/summernote.css" rel="stylesheet" type="text/css"/>
+
+
 	
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
@@ -490,6 +493,7 @@
 <script src="<?php echo base_url()?>assets/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script> 
 <script src="<?php echo base_url()?>assets/plugins/jquery-block-ui/jqueryblockui.js" type="text/javascript"></script> 
 <!-- END CORE JS FRAMEWORK --> 
+<script src="<?php echo base_url()?>assets/plugins/summernote/dist/summernote.min.js" type="text/javascript"></script>
 <!-- BEGIN PAGE LEVEL JS --> 	
 <script src="<?php echo base_url()?>assets/plugins/jquery-scrollbar/jquery.scrollbar.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url()?>assets/plugins/pace/pace.min.js" type="text/javascript"></script>  

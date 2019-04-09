@@ -80,18 +80,9 @@
                 <div class="user-profile-pic-normal"> <img width="35" height="35" data-src-retina="<?php echo base_url()?>assets/img/profiles/avatar_small2x.jpg" data-src="<?php echo base_url()?>assets/img/profiles/avatar_small.jpg" src="<?php echo base_url()?>assets/img/profiles/avatar_small.jpg" alt=""> </div>
               </div>
               <div class="info-wrapper">
-                <div class="info"> Hi I have installed agent to monitor the usage of the droplet done via Anturis <br>
-                  and lately there was a lot of down time. One that caught my eye was this <br>
-                  Incident report<br>
-                  <br>
-                  New Critical Incident started at 13:10 MST on Monday, October 28 <br>
-                  Critical Incident started at 13:10 MST on Monday, October 28 with ace has ended at 13:51 MST on Monday, October 28.<br>
-                  <br>
-                  Incident duration was 41 minutes.<br>
-                  <br>
-                  The server did not respond for 41 minutes.As you see 41 minutes is a big deal for us as we are going to lose alot of revenue we need you guys to check if these records are correct and if so why and will this happen again? or do we need to purchase some sort of cluster ? this is a very critical situation <br>
-                  <br>
-                Waiting for your reply </div>
+                <div class="info">
+                  <?php echo $row->deskripsi?>
+                </div>
                 <div class="clearfix"></div>
               </div>
               <div class="clearfix"></div>
@@ -246,6 +237,10 @@
             <input type="text" class="form-control" name="nama" placeholder="Enter Nama">
           </div>
           <div class="form-group">
+                                <label for="input-title-category">Description</label><br/> &nbsp;<span style="color:red;font-style:italic;">*Drag-and-Drop image here to upload</span>
+                        <textarea class="editor_new" name="deskripsi" rows="80"></textarea>
+            </div>
+          <div class="form-group">
             <label for="exampleInputEmail1">Lokasi</label>
             <input type="ext" class="form-control" name="lokasi" placeholder="Enter Lokasi">
           </div>
@@ -263,3 +258,15 @@
 
     </div>
   </div>  
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.editor_new').summernote({
+       height: 100,
+  toolbar: [],
+        styleWithSpan: false,
+  onImageUpload: function(files, editor, welEditable) {
+                sendFile(files[0], editor, welEditable);
+   }
+  });
+    });
+  </script>

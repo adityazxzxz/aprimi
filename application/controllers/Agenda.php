@@ -29,9 +29,11 @@ class Agenda extends CI_Controller {
 		$lokasi = $this->input->post('lokasi');
 		$tanggal = $this->input->post('tanggal');
 		$user_created = $this->session->userdata('user_id');
+		$deskripsi = $this->input->post('deskripsi');
 
 		$req = $this->agenda->create(array(
 			'nama'=>$nama,
+			'deskripsi'=>$deskripsi,
 			'lokasi'=>$lokasi,
 			'tanggal'=>$tanggal,
 			'user_created'=>$user_created
