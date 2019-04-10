@@ -33,4 +33,23 @@ class Folder_management extends CI_Controller {
 		$this->load->view('index',$data);
 	}
 
+	public function download($folder=null,$file=null){
+		$path = './media';
+		if(!empty($folder))
+			$path .= "/$folder";
+
+		if(!empty($file))
+			$path .= "/$file";
+
+
+		if(is_dir($path))
+			redirect('folder_management/list');
+
+		force_download($path, NULL);
+
+		echo $path;
+
+
+	}
+
 }
