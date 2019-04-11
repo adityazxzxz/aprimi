@@ -23,11 +23,12 @@ class Commitment extends CI_Controller {
 		$user_id = $this->session->userdata('user_id');
 		$name = $this->input->post('name');
 		$company = $this->input->post('company');
+		$note = $this->input->post('note');
 		$confirm = $this->input->post('confirm');
 		$time = ($this->input->post('time')==="other") ? $this->input->post('other_time') : $this->input->post('time');
 
-		$exists = $this->commit->find('*',array('user_id'=>$user_id,'YEAR(created_at)'=>date('Y')));
-		if($exists->row()){
+		$exists = $this->commit->find($page=1,array('user_id'=>$user_id,'YEAR(created_at)'=>date('Y')));
+		if($exists){
 			$this->session->set_flashdata('error','Commitment this year already exist!');
 			return redirect('/commitment');
 		}
@@ -36,7 +37,8 @@ class Commitment extends CI_Controller {
 			'name'=>$name,
 			'company'=>$company,
 			'confirmed'=>$confirm,
-			'time'=>$time
+			'time'=>$time,
+			'note'=>$note
 		));
 		if($req){
 			$this->session->set_flashdata('success','Create Commitment succeed!');

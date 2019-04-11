@@ -14,16 +14,16 @@ class Folder_management extends CI_Controller {
 	}
 
 	public function index(){
-		redirect('folder_management/list');
+		redirect('folder_management/listing');
 	}
 
-	public function list($folder=null){
+	public function listing($folder=null){
 		$path = './media/';
 		if(!empty($folder)){
 			$path .=$folder.'/';
 		}
 		if(!is_dir($path)){
-			redirect('folder_management/list');
+			redirect('folder_management/listing');
 		}
 		$scan = scandir($path);
 		$scanned = array_diff($scan, array('..', '.'));
@@ -43,7 +43,7 @@ class Folder_management extends CI_Controller {
 
 
 		if(is_dir($path))
-			redirect('folder_management/list');
+			redirect('folder_management/listing');
 
 		force_download($path, NULL);
 

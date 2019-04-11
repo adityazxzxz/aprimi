@@ -133,11 +133,11 @@
                                     </div>
                                     <div class="form-check">
                                         <label class="form-check-label">
-                                            <input type="radio" class="form-check-input" name="confirm" id="" value="yes" checked>
+                                            <input type="radio" class="form-check-input" name="confirm" id="" value="1" checked>
                                             Yes	I agree to join the APRIMI Committee
                                         </label>
                                         <label class="form-check-label">
-                                            <input type="radio" class="form-check-input" name="confirm" id="" value="no">
+                                            <input type="radio" class="form-check-input" name="confirm" id="" value="0">
                                             No	I am not available to join the APRIMI Committee
                                         </label>
                                     </div>

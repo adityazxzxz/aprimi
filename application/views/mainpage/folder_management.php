@@ -33,43 +33,19 @@
 								</thead>
 								<tbody>
 									<?php
-									/*$last = $this->uri->total_segments();
-									$lastUri = $this->uri->segment($last);*/
 									$url = site_url().'/folder_management/download';
 									if(!empty($this->uri->segment(3)))
 										$url .= '/'.$this->uri->segment(3);
 									foreach ($list_file as $dir => $value) {
-
-										//echo (is_dir($dir_path.$value)) ? "<span class="\glyphicon glyphicon-folder-open\"></span>" : '';
 										echo "<tr>";
 										echo "<td>";
-										echo (is_dir($path.$value)) ? "<a href=".site_url()."/folder_management/list/".$value."><span class=\"glyphicon glyphicon-folder-open\" style=\"margin-right:10px\"></span>$value" : "<span class=\"glyphicon glyphicon-file\" style=\"margin-right:10px\"></span>$value</a>";
+										echo (is_dir($path.$value)) ? "<a href=".site_url()."/folder_management/listing/".$value."><span class=\"glyphicon glyphicon-folder-open\" style=\"margin-right:10px\"></span>$value" : "<span class=\"glyphicon glyphicon-file\" style=\"margin-right:10px\"></span>$value</a>";
 										echo "</td>";
 										echo "<td>".date('Y-m-d H:i:s',filemtime($path.$value))."</td>";
 										echo (!is_dir($path.$value)) ? "<td><a href=\"$url/$value\"><i class=\"fa fa-download\"></i>&nbsp;Download</a></td>" : '';
 										echo "</tr>";
 									}
 									?>
-									<!-- <tr>
-										<td>File 2</td>
-										<td>21-03-2019</td>
-										<td><a href="#"><i class="fa fa-download"></i>&nbsp;Download</a></td>
-									</tr>
-									<tr>
-										<td>File 3</td>
-										<td>21-03-2019</td>
-										<td><a href="#"><i class="fa fa-download"></i>&nbsp;Download</a></td>
-									</tr>
-									<tr>
-										<td>File 4</td>
-										<td>21-03-2019</td>
-										<td><a href="#"><i class="fa fa-download"></i>&nbsp;Download</a></td>
-									</tr>
-									<tr>
-										<td>File 5</td>
-										<td>21-03-2019</td>
-										<td><a href="#"><i class="fa fa-download"></i>&nbsp;Download</a></td>
-									</tr> -->
 								</tbody>
 							</table>				
 				
