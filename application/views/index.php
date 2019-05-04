@@ -221,7 +221,7 @@
 					
 				</a>
 			</li>
-			<li class="">
+			<!-- <li class="">
 				<a href="javascript:;">
 					<i class="fa fa-folder-open"></i>
 					<span class="title">Folder management</span>
@@ -232,11 +232,16 @@
 					<li>
 						<a href="javascript:;"><span class="title">Folder 2</span><span class="arrow "></span></a>
 						<ul class="sub-menu">
-							<!-- <li><a href="javascript:;">Sub Folder 1</a></li> -->
 							<li><a href="<?php echo site_url()?>/folder_management">Sub Folder 1</a></li>
 						</ul>
 					</li>
 				</ul>
+			</li> -->
+			<li class="">
+				<a href="<?php echo site_url()?>/folder_management">
+					<i class="fa fa-folder-open"></i>
+					<span class="title">Folder management</span>
+				</a>
 			</li>
 			<li class="">
 				<a href="<?php echo site_url()?>/commitment">

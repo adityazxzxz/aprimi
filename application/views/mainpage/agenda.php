@@ -88,31 +88,6 @@
               <div class="clearfix"></div>
             </div>
             <br>
-            <div class="form-actions">
-              <div class="post col-md-12">
-                <div class="user-profile-pic-wrapper">
-                  <div class="user-profile-pic-normal"> <img width="35" height="35" data-src-retina="<?php echo base_url()?>assets/img/profiles/c2x.jpg" data-src="<?php echo base_url()?>assets/img/profiles/c.jpg" src="<?php echo base_url()?>assets/img/profiles/c.jpg" alt=""> </div>
-                </div>
-                <div class="info-wrapper">
-                  <div class="info"> Hi,<br>
-                    <br>
-                    Thank you for reaching us, We are looking into this issue and will update you.<br>
-                    <br>
-                    Alex<br>
-                    <hr>
-                    <p class="small-text">Posted on 10/29/13 at 07:21</p>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label"><i class="fa fa-reply"></i>&nbsp;Post a reply</label>
-                    <div class="controls">
-                      <input type="text" class="form-control">
-                    </div>
-                  </div>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="clearfix"></div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

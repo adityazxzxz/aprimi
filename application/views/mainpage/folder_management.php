@@ -4,7 +4,7 @@
 				<li>   
 				  <p>Folder Management</p>  					 							
 				</li>     	 
-				<li><a href="#" class="active">Folder 1</a></li>                    
+				<!-- <li><a href="#" class="active">Folder 1</a></li>   -->                  
 			</ul>
 			<div class="page-title">	
 				<i class="icon-custom-left"></i>
@@ -14,7 +14,7 @@
 				<div class="col-md-12">
 				    <div class="grid simple ">
 						<div class="grid-title no-border">
-							<h4>Folder <span class="semi-bold">1</span></h4>
+							<!-- <h4>Folder <span class="semi-bold">1</span></h4> -->
 							<div class="tools">
 								<a href="javascript:;" class="collapse"></a>
 								<a href="javascript:;" class="reload"></a>
