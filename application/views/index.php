@@ -244,11 +244,20 @@
 				</a>
 			</li>
 			<li class="">
-				<a href="<?php echo site_url()?>/commitment">
+					<a href="<?php echo site_url()?>/commitment">
+						<i class="fa fa-pencil-square-o"></i>
+						<span class="title">Comitment</span>
+					</a>
+				</li>
+			<?php if($ses === 'admin'){?>
+				
+				<li class="">
+				<a href="<?php echo site_url()?>/commitment/list_commitment">
 					<i class="fa fa-pencil-square-o"></i>
-					<span class="title">Comitment</span>
+					<span class="title">List Comitment</span>
 				</a>
 			</li>
+			<?php }?>
 			<li class="">
 				<a href="<?php echo site_url()?>/agenda">
 					<i class="fa fa-pencil-square-o"></i>
