@@ -257,6 +257,12 @@
 					<span class="title">List Comitment</span>
 				</a>
 			</li>
+			<li class="">
+				<a href="<?php echo site_url()?>/agenda/absensi_list">
+					<i class="fa fa-pencil-square-o"></i>
+					<span class="title">List Absensi Agenda</span>
+				</a>
+			</li>
 			<?php }?>
 			<li class="">
 				<a href="<?php echo site_url()?>/agenda">
