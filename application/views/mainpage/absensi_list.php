@@ -30,7 +30,7 @@
 										<th>No.</th>
 										<th>Name</th>
 										<th>Agenda</th>
-										<th>Created Date</th>
+										<th>Updated Date</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -49,7 +49,7 @@
 														<?php echo $row->nama?>
 													</td>
 													<td>
-														<?php echo $row->created_at?>
+														<?php echo $row->updated_at?>
 													</td>
 												</tr>
 												<?php
