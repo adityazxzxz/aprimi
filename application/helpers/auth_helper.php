@@ -32,6 +32,7 @@ if(!function_exists('check_session')){
 
 if(!function_exists('create_session')){
 	function create_session($id){
+		$date = date('Y-m-d H:i:s');
 		$ci =& get_instance();
 		$ci->load->model('auth_model','auth');
 		$ci->load->library('session');
@@ -40,7 +41,8 @@ if(!function_exists('create_session')){
 			'id'=>$id
 		);
 		$value = array(
-			'session'=>$newsession
+			'session'=>$newsession,
+			'updated_at'=>$date
 		);
 		$ci->auth->update($condition,$value);
 		return $newsession;

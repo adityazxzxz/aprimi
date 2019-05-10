@@ -37,7 +37,8 @@ class Agenda extends CI_Controller {
 			'deskripsi'=>$deskripsi,
 			'lokasi'=>$lokasi,
 			'tanggal'=>$tanggal,
-			'user_created'=>$user_created
+			'user_created'=>$user_created,
+			'created_at'=>date('Y-m-d H:i:s')
 		));
 		if($req){
 			echo json_encode(array(

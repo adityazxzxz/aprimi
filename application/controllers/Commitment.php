@@ -38,7 +38,8 @@ class Commitment extends CI_Controller {
 			'company'=>$company,
 			'confirmed'=>$confirm,
 			'time'=>$time,
-			'note'=>$note
+			'note'=>$note,
+			'created_at'=>date('Y-m-d H:i:s')
 		));
 		if($req){
 			$this->session->set_flashdata('success','Create Commitment succeed!');
