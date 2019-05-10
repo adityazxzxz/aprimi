@@ -8,26 +8,6 @@
   <div class="row login-container animated fadeInUp">  
         <div class="col-md-7 col-md-offset-2 tiles white no-padding">
 		 <div class="p-t-30 p-l-40 p-b-20 xs-p-t-10 xs-p-l-10 xs-p-b-10"> 
-		 	<div class="col-lg-12 text-center">
-                    <?php $ok_msg = $this->session->flashdata('success'); if(!empty($error_msg)){ ?>
-                        <div class="alert alert-block alert-success fade in">
-                            <button data-dismiss="alert" class="close close-sm" type="button">
-                                <i class="fa fa-times"></i>
-                            </button>
-                            <strong>Success!</strong> <?php  echo $ok_msg; ?>
-                        </div>
-                    <?php } ?>
-
-                    <?php $error_msg = $this->session->flashdata('error'); if(!empty($error_msg)){ ?>
-                        <div class="alert alert-block alert-danger fade in">
-                            <button data-dismiss="alert" class="close close-sm" type="button">
-                                <i class="fa fa-times"></i>
-                            </button>
-                            <strong>Failed!</strong> <?php  echo $error_msg; ?>
-                        </div>
-                    <?php } ?>
-
-                </div>
           <h2 class="normal">Get QRCode</h2>
           <p>Pilih Agenda untuk menampilkan QRCode<br></p>
           <!-- <button type="button" class="btn btn-primary btn-cons" id="login_toggle">Login</button> -->

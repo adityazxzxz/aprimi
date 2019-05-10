@@ -6,7 +6,22 @@
 <body class="error-body no-top lazy"  data-original="assets/img/work.jpg"  style="background-image: url('<?php echo base_url()?>assets/img/work.jpg')"> 
 <div class="container">
   <div class="row login-container animated fadeInUp">  
+    <div class="col-lg-12 text-center">
+                    <?php $ok_msg = $this->session->flashdata('success'); if(!empty($ok_msg)){ ?>
+                        <div class="alert alert-block alert-success fade in">
+                            <strong>Success!</strong> <?php  echo $ok_msg; ?>
+                        </div>
+                    <?php } ?>
+
+                    <?php $error_msg = $this->session->flashdata('error'); if(!empty($error_msg)){ ?>
+                        <div class="alert alert-block alert-danger fade in">
+                            <strong>Failed!</strong> <?php  echo $error_msg; ?>
+                        </div>
+                    <?php } ?>
+
+                </div>
         <div class="col-md-7 col-md-offset-2 tiles white no-padding">
+          
 		 <div class="p-t-30 p-l-40 p-b-20 xs-p-t-10 xs-p-l-10 xs-p-b-10"> 
           <h2 class="normal">Absensi Aprimi</h2>
           <p>Gunakan email dan password<br></p>

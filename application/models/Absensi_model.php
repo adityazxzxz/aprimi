@@ -13,9 +13,13 @@ class Absensi_model extends CI_MODEL{
 		$this->table = 'ap_absensi';
 	}
 
-	function find($field,$cond){
-		$this->db->select($field);
-		$this->db->where($cond);
+	function find($field=null,$cond=null){
+		if(!empty($field))
+			$this->db->select($field);
+
+		if(!empty($cond))
+			$this->db->where($cond);
+		
 		$q = $this->db->get($this->table);
 		return $q;
 	}

@@ -48,9 +48,6 @@ class Absensi extends CI_Controller {
 	public function login(){
 		$id = $this->uri->segment(3);
 		$code = $this->uri->segment(4);
-		if(empty($id) || empty($code))
-			redirect('/absensi/list_agenda');
-
 		$data['agenda_id'] = $id;
 		$data['ucode'] = $code;
 
@@ -63,21 +60,36 @@ class Absensi extends CI_Controller {
 	public function do_login(){
 		$agenda_id = $this->input->post('agenda_id');
 		$ucode = $this->input->post('ucode');
+		if(empty($agenda_id) || empty($ucode)){
+			$this->session->set_flashdata('error','invalid qrcode!');
+			redirect('/absensi/login');
+		}
+
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
+
+		if(empty($email) || empty($password)){
+			$this->session->set_flashdata('error','email or password is empty!');
+			redirect('/absensi/login');
+		}
+			
 		$req = $this->auth->find_one($email,$password);
 		$date = date('Y-m-d H:i:s');
 		if($req){
-			$req2 = $this->absensi->find_one($agenda_id,$ucode);
-			if($req2){
-				$update = $this->absensi->update(array('id'=>$req2->id,"status"=>0),array('user_id'=>$req->id,'status'=>1,'updated_at'=>$date));
+			$req2 = $this->absensi->find(null,array('agenda_id'=>$agenda_id,'code'=>$ucode,'status'=>0));
+			if($req2->row()){
+				$update = $this->absensi->update(array('id'=>$req2->row()->id),array('user_id'=>$req->id,'status'=>1,'updated_at'=>$date));
+				$this->session->set_flashdata('success','Anda berhasil Absen!');
+				redirect('/absensi/login');
+			}else{
+				$this->session->set_flashdata('error','Absensi gagal!');
+				redirect('/absensi/login');
 			}
-			$this->session->set_flashdata('success','Anda berhasil Absen!');
-			redirect('/absensi/list_agenda');
+			
 		}else{
 			//to login page with flash data
 			$this->session->set_flashdata('error','Email or password invalid!');
-			redirect('/absensi/list_agenda');
+			redirect("/absensi/login/$agenda_id/$ucode");
 		}
 	}
 
