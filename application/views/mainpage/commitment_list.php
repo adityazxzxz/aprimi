@@ -24,7 +24,7 @@
 							<!-- <p>
 								<button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> New folder</button>
 							</p> -->
-							<table class="table" border='1'>
+							<table class="table">
 								<thead>
 									<tr>
 										<th>No.</th>
@@ -61,14 +61,14 @@
 										}
 									?>
 								</tbody>
-								<tfoot>
-									<tr>
+							</table>
+							<table width="100%">
+								<tr>
 										<td colspan="2">
 											Total Record : <?php echo $total_record ?>
 										</td>
 										<td color="green" colspan="3" align="right"><?php echo $pagination ?></td>
 									</tr>
-								</tfoot>
 							</table>				
 				
 						</div>

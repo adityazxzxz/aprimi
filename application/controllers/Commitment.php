@@ -61,7 +61,7 @@ class Commitment extends CI_Controller {
 		$req = $this->commit->find($page);
 		$config['base_url'] = site_url('commitment/list_commitment/');
         $config['total_rows'] = (!empty($this->commit->total_record)) ? $this->commit->total_record : 0;
-        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
+        $config['full_tag_open']    = '<div class="pagging text-right"><nav><ul class="pagination justify-content-center">';
         $config['full_tag_close']   = '</ul></nav></div>';
         $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
         $config['num_tag_close']    = '</span></li>';
