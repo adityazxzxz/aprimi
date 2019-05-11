@@ -169,7 +169,7 @@
                                     </div>
                                     <div class="form-group text-right">
                                         <button type="submit" class="btn btn-primary">Submit</button>
-                                        <button type="button" class="btn btn-default">Cancel</button>
+                                        <button type="reset" class="btn btn-danger">Cancel</button>
                                     </div>
                                 </form>
                                 

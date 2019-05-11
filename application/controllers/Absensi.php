@@ -73,16 +73,34 @@ class Absensi extends CI_Controller {
 			redirect('/absensi/login');
 		}
 			
-		$req = $this->auth->find_one($email,$password);
+		$user = $this->auth->find_one($email,$password);
 		$date = date('Y-m-d H:i:s');
-		if($req){
-			$req2 = $this->absensi->find(null,array('agenda_id'=>$agenda_id,'code'=>$ucode,'status'=>0));
-			if($req2->row()){
-				$update = $this->absensi->update(array('id'=>$req2->row()->id),array('user_id'=>$req->id,'status'=>1,'updated_at'=>$date));
-				$this->session->set_flashdata('success','Anda berhasil Absen!');
-				redirect('/absensi/login');
+		if($user){
+			$absenCond = array(
+				'agenda_id'=>$agenda_id,
+				'code'=>$ucode,
+				'date(created_at)'=>date('Y-m-d')
+			);
+			$absen = $this->absensi->find(null,$absenCond);
+			if($absen->row()){
+				$userCond = array(
+					'user_id'=>$user->id,
+					'agenda_id'=>$agenda_id,
+					'date(updated_at)'=>date('Y-m-d')
+				);
+				$user_exists = $this->absensi->find(null,($userCond));
+				if($user_exists->row()){
+					$getAgenda = $this->absensi->find_agenda($agenda_id);
+					$this->session->set_flashdata('error',"Maaf, anda sudah absen pada ".$getAgenda->nama." hari ini tanggal ".$user_exists->row()->updated_at);
+					redirect('/absensi/login');
+				}else{
+					$update = $this->absensi->update(array('id'=>$absen->row()->id),array('user_id'=>$user->id,'status'=>1,'updated_at'=>$date));
+					$this->session->set_flashdata('success','Anda berhasil Absen!');
+					redirect('/absensi/login');
+				}
+				
 			}else{
-				$this->session->set_flashdata('error','Absensi gagal!');
+				$this->session->set_flashdata('error','Absensi not found!');
 				redirect('/absensi/login');
 			}
 			

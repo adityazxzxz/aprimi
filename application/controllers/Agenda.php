@@ -61,8 +61,9 @@ class Agenda extends CI_Controller {
 		if(empty($page) || !is_numeric($page)){
 			$page = 1;
 		}
+		$field = array('ap_users.name','ap_agenda.nama','ap_absensi.updated_at');
 		$cond = array('ap_absensi.status'=>1);
-		$req = $this->absensi->pagination($page,$cond);
+		$req = $this->absensi->pagination($page,$cond,$field);
 		$config['base_url'] = site_url('commitment/list_commitment/');
         $config['total_rows'] = (!empty($this->absensi->total_record)) ? $this->absensi->total_record : 0;
         $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';

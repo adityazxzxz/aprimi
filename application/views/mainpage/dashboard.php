@@ -15,7 +15,7 @@
 		?>
 
 
-		<img src="<?php echo base_url()?>img_upload/dashboard-sample.jpg" style="width: 100%;
+		<img src="<?php echo base_url()?>img_upload/<?php echo $analytic?>" style="width: 100%;
 		height: auto;">
 		<!-- END PAGE TITLE -->
 		<!-- BEGIN PlACE PAGE CONTENT HERE -->
@@ -31,20 +31,20 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Create Agenda</h4>
+				<h4 class="modal-title">Upload Analytic</h4>
 			</div>
 			<div class="modal-body">
 				<?php echo form_open_multipart('dashboard/do_upload');?>
 				<div class="form-group">
 					<label for="exampleInputEmail1">Nama</label>
-					<input type="file" class="form-control" name="userfile" size="20">
+					<input type="file" class="form-control" name="userfile" size="20" required>
 				</div>
 
 
 			</div>
 			<div class="modal-footer">
-				<button type="submit" class="btn btn-default" id="submit_agenda">Submit</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="submit" class="btn btn-primary" id="submit_agenda">Submit</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 			</div>
 		</form>
 	</div>

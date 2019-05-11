@@ -11,6 +11,7 @@ class Absensi_model extends CI_MODEL{
 	function __construct(){
 		parent::__construct();
 		$this->table = 'ap_absensi';
+		$this->table_agenda = 'ap_agenda';
 	}
 
 	function find($field=null,$cond=null){
@@ -45,10 +46,12 @@ class Absensi_model extends CI_MODEL{
 		return $q;
 	}
 
-	function pagination($page=1,$cond=null){
+	function pagination($page=1,$cond=null,$field=null){
 		$offset = ($page == 1) ? 0 :  ($page*10)-(10);
 
 		$this->page_num = (empty($offset)) ? 1 : $offset+1;
+		if(!empty($field))
+			$this->db->select($field);
 
 		if(!empty($cond))
 			$this->db->where($cond);
@@ -67,6 +70,12 @@ class Absensi_model extends CI_MODEL{
         if(!empty($cond))
             $this->db->where($cond);
         return $this->db->count_all_results($this->table);
+    }
+
+    public function find_agenda($id){
+    	$this->db->where('id',$id);
+    	$q = $this->db->get($this->table_agenda);
+    	return $q->row();
     }
 
 }
