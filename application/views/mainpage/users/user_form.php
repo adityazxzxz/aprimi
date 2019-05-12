@@ -58,7 +58,7 @@
                 </div>
 
             </div>
-            <?php if($hide === 1){
+            <?php if($action === "save"){
                 ?>
                 <div class="form-group">
                 <label for="name" class="form-label">Password</label>
@@ -117,7 +117,7 @@
             </div>
             <div class="form-group text-right">
                 <?php
-                if($action === "read"){
+                if($action !== "read"){
                     ?>
                     <button type="submit" class="btn btn-primary"><?php echo $button?></button>
                     <?php

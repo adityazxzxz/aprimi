@@ -69,7 +69,7 @@ class Users extends CI_Controller {
 			'name' => set_value('name'),
 			'email' => set_value('email'),
 			'password' => '',
-			'no_tlp' => set_value('no_telp'),
+			'no_tlp' => set_value('no_tlp'),
 			'job_title' => set_value('job_title'),
 			'jabatan_komite' => set_value('jabatan_komite'),
 			'company' => set_value('company'),
@@ -105,7 +105,7 @@ class Users extends CI_Controller {
 			'jabatan_komite' => $req->row()->jabatan_komite,
 			'company' => $req->row()->company,
 			'hide' => TRUE,
-			'action' => 'edit'
+			'action' => 'read'
 
 		);
 
