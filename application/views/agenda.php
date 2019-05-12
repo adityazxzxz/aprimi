@@ -250,11 +250,15 @@
                 <li><a href="#" class="active">Agenda</a></li>                    
             </ul>
             <div class="page-title">	
-                <i class="icon-custom-left"></i>
-                <h3>List of <span class="semi-bold">Agenda</span></h3>	
-                <div class="pull-right actions">
-                        <button class="btn btn-primary btn-cons" type="button" id="btn-new-ticket">New Agenda</button>
-                      </div>	
+            	<i class="icon-custom-left"></i>
+            	<h3>List of <span class="semi-bold">Agenda</span></h3>	
+            	<?php if($this->session->userdata('role') === 'admin'){
+            		?>
+            		<div class="pull-right actions">
+	            		<button class="btn btn-primary btn-cons" type="button" id="btn-new-ticket">New Agenda</button>
+	            	</div>
+            		<?php
+            	}?>	
             </div>
             <div class="clearfix"></div>
       <div class="row">

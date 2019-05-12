@@ -2,7 +2,8 @@
 	<div class="content">  
 		<!-- BEGIN PAGE TITLE -->
 		<div class="page-title">
-			<h1>Aprimi.org Web Traffic March 2019 </h1>
+			<!-- <h1>Aprimi.org Web Traffic March 2019 </h1> -->
+			<h1><?php echo (!empty($title->value)) ? $title->value : 'Aprimi.org Web Traffic'?> </h1>
 		</div>
 		<?php
 		if($this->session->userdata('role') === 'admin'){
@@ -15,7 +16,7 @@
 		?>
 
 
-		<img src="<?php echo base_url()?>img_upload/<?php echo $analytic?>" style="width: 100%;
+		<img src="<?php echo base_url()?>img_upload/<?php echo $analytic->value?>" style="width: 100%;
 		height: auto;">
 		<!-- END PAGE TITLE -->
 		<!-- BEGIN PlACE PAGE CONTENT HERE -->
@@ -36,8 +37,12 @@
 			<div class="modal-body">
 				<?php echo form_open_multipart('dashboard/do_upload');?>
 				<div class="form-group">
+					<label for="exampleInputEmail1">Title</label>
+					<input type="text" class="form-control" name="title" size="20" >
+				</div>
+				<div class="form-group">
 					<label for="exampleInputEmail1">Nama</label>
-					<input type="file" class="form-control" name="userfile" size="20" required>
+					<input type="file" class="form-control" name="userfile" size="20" >
 				</div>
 
 

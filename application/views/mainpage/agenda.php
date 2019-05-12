@@ -12,7 +12,13 @@
       <h3>List of <span class="semi-bold">Agenda</span></h3>  
       <div class="pull-right actions">
         <!-- <button class="btn btn-primary btn-cons" type="button" id="btn-new-ticket">New Agenda</button> -->
-        <button class="btn btn-primary btn-cons" type="button" data-toggle="modal" data-target="#myModal">New Agenda</button>
+        <?php
+        if($this->session->userdata('role' === 'admin')){
+          ?>
+          <button class="btn btn-primary btn-cons" type="button" data-toggle="modal" data-target="#myModal">New Agenda</button>
+          <?php
+        }
+        ?>
       </div>  
     </div>
     <div class="clearfix"></div>
