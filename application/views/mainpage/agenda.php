@@ -8,7 +8,7 @@
       <li><a href="#" class="active">Agenda</a></li>                    
     </ul>
     <div class="page-title">  
-      <i class="icon-custom-left"></i>
+      <a href="<?php echo site_url('home')?>"><i class="icon-custom-left"></i></a>
       <h3>List of <span class="semi-bold">Agenda</span></h3>  
       <div class="pull-right actions">
         <!-- <button class="btn btn-primary btn-cons" type="button" id="btn-new-ticket">New Agenda</button> -->

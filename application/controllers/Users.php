@@ -16,7 +16,11 @@ class Users extends CI_Controller {
 	}
 
 	public function index(){
-		
+		$this->list();
+	}
+
+	public function list($page=null){
+
 		if($this->session->userdata('role') !== 'admin'){
 			$this->session->set_flashdata('error','you cannot access this page!');
 			redirect('/home');
@@ -24,8 +28,10 @@ class Users extends CI_Controller {
 		if(empty($page) || !is_numeric($page)){
 			$page = 1;
 		}
-		$req = $this->user->pagination($page);
-        $config['total_rows'] = (!empty($this->commit->total_record)) ? $this->commit->total_record : 0;
+		$cond = array('role !='=>'admin');
+		$req = $this->user->pagination($page,$cond);
+		$config['base_url'] = site_url('users/list');
+        $config['total_rows'] = (!empty($this->user->total_record)) ? $this->user->total_record : 0;
         $config['full_tag_open']    = '<div class="pagging text-right"><nav><ul class="pagination justify-content-center">';
         $config['full_tag_close']   = '</ul></nav></div>';
         $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
@@ -67,46 +73,71 @@ class Users extends CI_Controller {
 			'job_title' => set_value('job_title'),
 			'jabatan_komite' => set_value('jabatan_komite'),
 			'company' => set_value('company'),
-			'hide' => FALSE
+			'hide' => FALSE,
+			'action' => 'save'
 
 		);
-
 		$this->load->view('index',$data);
 	}
 
-	public function read(){
+	public function read($id=null){
+		if(empty($id))
+			redirect('users/');
+
+		$cond = array(
+				'id' => $id
+			);
+		$req = $this->user->find(null,$cond);
+		if(!$req->row())
+			redirect('/users');
+
 		$data = array(
 			'mainpage' => 'mainpage/users/user_form',
 			'button' => 'Update',
-			'form_action' => site_url('users/save'),
+			'form_action' => '#',
 			'readonly' => 'readonly',
-			'name' => set_value('name'),
-			'email' => set_value('email'),
-			'password' => set_value('password'),
-			'no_tlp' => set_value('no_telp'),
-			'job_title' => set_value('job_title'),
-			'jabatan_komite' => set_value('jabatan_komite'),
-			'company' => set_value('company'),
-			'hide' => TRUE
+			'id' => $req->row()->id,
+			'name' => $req->row()->name,
+			'email' => $req->row()->email,
+			'password' => '',
+			'no_tlp' => $req->row()->no_tlp,
+			'job_title' => $req->row()->job_title,
+			'jabatan_komite' => $req->row()->jabatan_komite,
+			'company' => $req->row()->company,
+			'hide' => TRUE,
+			'action' => 'edit'
 
 		);
 
 		$this->load->view('index',$data);
 	}
 
-	public function edit(){
+	public function edit($id=null){
+		if(empty($id))
+			redirect('users/');
+
+		$cond = array(
+				'id' => $id
+			);
+		$req = $this->user->find(null,$cond);
+		if(!$req->row())
+			redirect('/users');
+
 		$data = array(
 			'mainpage' => 'mainpage/users/user_form',
 			'button' => 'Update',
-			'form_action' => site_url('users/save'),
+			'form_action' => site_url('users/update'),
 			'readonly' => '',
-			'name' => set_value('name'),
-			'email' => set_value('email'),
-			'password' => set_value('password'),
-			'no_tlp' => set_value('no_telp'),
-			'job_title' => set_value('job_title'),
-			'jabatan_komite' => set_value('jabatan_komite'),
-			'company' => set_value('company')
+			'id' => $req->row()->id,
+			'name' => $req->row()->name,
+			'email' => $req->row()->email,
+			'password' => '',
+			'no_tlp' => $req->row()->no_tlp,
+			'job_title' => $req->row()->job_title,
+			'jabatan_komite' => $req->row()->jabatan_komite,
+			'company' => $req->row()->company,
+			'hide' => TRUE,
+			'action' => 'edit'
 
 		);
 
@@ -119,46 +150,100 @@ class Users extends CI_Controller {
 			$this->create();
 		}else{
 			$cond = array(
-	 			'email' => $this->input->post('email',TRUE)
-	 		);
-	        $check = $this->user->find(null,$cond);
-	        if($check->row() > 0){
-	        	$this->session->set_flashdata('success', 'Email already exists!');
-	        	redirect('users/create');
-	        }
+				'email' => $this->input->post('email',TRUE)
+			);
+			$check = $this->user->find(null,$cond);
+			//var_dump($check->row());;exit;
+			if(!empty($check->row())){
+				$this->session->set_flashdata('error', 'Email already exists!');
+				$this->create();
+			}else{
+				$data = array(
+					'name' => $this->input->post('name',TRUE),
+					'email' => $this->input->post('email',TRUE),
+					'password' => md5($this->input->post('password',TRUE)),
+					'no_tlp' => $this->input->post('no_tlp',TRUE),
+					'job_title' => $this->input->post('job_title',TRUE),
+					'jabatan_komite' => $this->input->post('jabatan_komite',TRUE),
+					'company' => $this->input->post('company',TRUE),
+					'role' => $this->input->post('role',TRUE),
+					'created_at' => date('Y-m-d H:i:s')
+				);
 
-	        
-	        $data = array(
-	        	'name' => $this->input->post('name',TRUE),
-	        	'email' => $this->input->post('email',TRUE),
-	        	'password' => md5($this->input->post('password',TRUE)),
-	        	'no_tlp' => $this->input->post('no_tlp',TRUE),
-	        	'job_title' => $this->input->post('job_title',TRUE),
-	        	'jabatan_komite' => $this->input->post('jabatan_komite',TRUE),
-	        	'company' => $this->input->post('company',TRUE),
-	        	'role' => $this->input->post('role',TRUE),
-	        	'created_at' => date('Y-m-d H:i:s')
-	        );
-
-	        $req = $this->user->create($data);
-	        if($req){
-	        	$this->session->set_flashdata('success', 'Create user succeed!');
-	        }else{
-	        	$this->session->set_flashdata('error', 'Created user failed!');
-	        }
-	        redirect(site_url('users/'));
-		} 
-			
- 		
- 		
-
+				$req = $this->user->create($data);
+				if($req){
+					$this->session->set_flashdata('success', 'Create user succeed!');
+				}else{
+					$this->session->set_flashdata('error', 'Created user failed!');
+				}
+				redirect(site_url('users/'));
+			}
+		}
 	}
 
+	public function update(){
+		$id = $this->input->post('id');
+		$this->_rules();
+		if ($this->form_validation->run() === FALSE){
+			$this->session->set_flashdata('error', validation_errors());
+			echo "<script>window.history.back();</script>";
+		}else{
+			$cond = array(
+				'email' => $this->input->post('email',TRUE)
+			);
+			$check = $this->user->find(null,$cond);
+			if(!empty($check->row())){
+				$this->session->set_flashdata('error', 'Email already exists!');
+				echo "<script>window.history.back();</script>";
+			}else{
+				$data = array(
+					'name' => $this->input->post('name',TRUE),
+					'email' => $this->input->post('email',TRUE),
+					'no_tlp' => $this->input->post('no_tlp',TRUE),
+					'job_title' => $this->input->post('job_title',TRUE),
+					'jabatan_komite' => $this->input->post('jabatan_komite',TRUE),
+					'company' => $this->input->post('company',TRUE),
+					'role' => $this->input->post('role',TRUE),
+					'updated_at' => date('Y-m-d H:i:s')
+				);
+				$cond = array(
+					'id' => $this->input->post('id')
+				);
+				$req = $this->user->update($cond,$data);
+				if($req){
+					$this->session->set_flashdata('success', 'Update user succeed!');
+				}else{
+					$this->session->set_flashdata('error', 'Update user failed!');
+				}
+				redirect(site_url('users/'));
+			}
+		}
+	}
+
+
+	public function delete($id){
+		if(empty($id))
+			redirect('users/');
+
+		$cond = array('id'=>$id);
+		$req = $this->user->delete($cond);
+		if($req){
+			$this->session->set_flashdata('success', 'Delete user succeed!');
+		}else{
+			$this->session->set_flashdata('error', 'Delete user failed!');
+		}
+		redirect(site_url('users/'));
+		
+	}
 	public function _rules(){
 		$this->form_validation->set_rules('name', 'Name', 'trim|required');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required');
-        $this->form_validation->set_rules('password_conf', 'Password Confirmation', 'trim|required|matches[password]');
+
+        if(empty($this->input->post('id'))){
+        	$this->form_validation->set_rules('password', 'Password', 'trim|required');
+        	$this->form_validation->set_rules('password_conf', 'Password Confirmation', 'trim|required|matches[password]');
+        }
+        	
         $this->form_validation->set_rules('no_tlp', 'No Telp', 'trim|numeric');
         $this->form_validation->set_rules('job_title', 'Job Title', 'trim');
         $this->form_validation->set_rules('jabatan_komite', 'Job Title', 'trim');

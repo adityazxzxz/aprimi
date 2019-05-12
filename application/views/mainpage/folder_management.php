@@ -7,7 +7,7 @@
 				<!-- <li><a href="#" class="active">Folder 1</a></li>   -->                  
 			</ul>
 			<div class="page-title">	
-				<i class="icon-custom-left"></i>
+				<a href="<?php echo site_url('home')?>"><i class="icon-custom-left"></i></a>
 				<h3>Folder <span class="semi-bold">Management</span></h3>		
 			</div>
 			<div class="row">

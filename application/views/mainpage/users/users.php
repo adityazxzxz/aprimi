@@ -7,7 +7,7 @@
 				<!-- <li><a href="#" class="active">Folder 1</a></li>   -->                  
 			</ul>
 			<div class="page-title">	
-				<i class="icon-custom-left"></i>
+				<a href="<?php echo site_url('home')?>"><i class="icon-custom-left"></i></a>
 				<h3>List <span class="semi-bold">Users</span></h3>		
 			</div>
 			<div class="row">
@@ -15,7 +15,6 @@
                         <?php $error_msg = $this->session->flashdata('error'); if(!empty($error_msg)){ ?>
                             <div class="alert alert-block alert-danger fade in">
                                 <button data-dismiss="alert" class="close close-sm" type="button">
-                                    <i class="fa fa-times"></i>
                                 </button>
                                 <strong>Error!</strong> <?php  echo $error_msg; ?>
                             </div>
@@ -24,7 +23,7 @@
                         <?php $ok_msg = $this->session->flashdata('success'); if(!empty($ok_msg)){ ?>
                             <div class="alert alert-block alert-success fade in">
                             <button data-dismiss="alert" class="close close-sm" type="button">
-                                    <i class="fa fa-times"></i>
+                                   
                             </button>
                             <strong>Success!</strong> <?php  echo $ok_msg; ?>
                             </div>
@@ -53,6 +52,7 @@
 										<th>Name</th>
 										<th>Email</th>
 										<th>Company</th>
+										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -73,6 +73,10 @@
 													<td>
 														<?php echo $row->company?>
 													</td>
+													<td class="text-center">
+			                                            <a href="<?php echo site_url('users/read/'.$row->id); ?>" title="View" class="btn-xs btn-default"><i class="fa fa-eye"></i></a> |
+			                                            <a href="<?php echo site_url('users/edit/'.$row->id); ?>" title="Edit" class="btn-xs btn-default"><i class="fa fa-pencil"></i></a> | <a href="<?php echo site_url('users/delete/'.$row->id); ?>" onClick="return confirm('Are you sure?')" title="Delete" class=" btn-xs btn-danger"><i class="fa fa-trash"></i></a>
+			                                        </td>
 												</tr>
 												<?php
 											endforeach;

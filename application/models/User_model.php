@@ -52,10 +52,21 @@ class User_model extends CI_MODEL{
 		$this->db->set($value);
 		$this->db->where($id);
 		$q = $this->db->update($this->table);
+		//$this->db->error();
 		if($this->db->affected_rows() > 0){
 			return true;
 		}else{
 			return false;
+		}
+	}
+
+	function delete($cond){
+		$this->db->where($cond);	
+		$q = $this->db->delete($this->table);
+		if($this->db->affected_rows() > 0){
+			return TRUE;
+		}else{
+			return FALSE;
 		}
 	}
 

@@ -221,6 +221,15 @@
 					
 				</a>
 			</li>
+			<?php if($ses === 'admin'){?>
+				
+				<li class="">
+				<a href="<?php echo site_url()?>/users/">
+					<i class="fa fa-pencil-square-o"></i>
+					<span class="title">User Management</span>
+				</a>
+			</li>
+			<?php }?>
 			<!-- <li class="">
 				<a href="javascript:;">
 					<i class="fa fa-folder-open"></i>
