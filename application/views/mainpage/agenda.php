@@ -13,7 +13,7 @@
       <div class="pull-right actions">
         <!-- <button class="btn btn-primary btn-cons" type="button" id="btn-new-ticket">New Agenda</button> -->
         <?php
-        if($this->session->userdata('role' === 'admin')){
+        if($this->session->userdata('role') === 'admin'){
           ?>
           <button class="btn btn-primary btn-cons" type="button" data-toggle="modal" data-target="#myModal">New Agenda</button>
           <?php
