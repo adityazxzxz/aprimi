@@ -38,7 +38,7 @@
 				<?php echo form_open_multipart('dashboard/do_upload');?>
 				<div class="form-group">
 					<label for="exampleInputEmail1">Title</label>
-					<input type="text" class="form-control" name="title" size="20" >
+					<input type="text" class="form-control" name="title" size="20" value="<?php echo (!empty($title->value)) ? $title->value : 'Aprimi.org Web Traffic'?>" >
 				</div>
 				<div class="form-group">
 					<label for="exampleInputEmail1">Nama</label>
