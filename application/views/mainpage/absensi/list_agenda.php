@@ -22,7 +22,8 @@
 									<tr>
 										<th>No.</th>
 										<th>Name</th>
-										<th>Created Date</th>
+										<th>Lokasi</th>
+										<th>Date</th>
 
 									</tr>
 								</thead>
@@ -39,7 +40,10 @@
 														<?php echo $row->nama?>
 													</td>
 													<td>
-														<?php echo $row->created_at?>
+														<?php echo $row->lokasi?>
+													</td>
+													<td>
+														<?php echo date('d M Y',strtotime($row->tanggal))?>
 													</td>
 													<td>
 														<a class="btn btn-info" target="_blank" href="<?php echo site_url().'/absensi/getqrcode/'.$row->id?>">QRCode</a>

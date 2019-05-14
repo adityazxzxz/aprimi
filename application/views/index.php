@@ -144,7 +144,8 @@
 						<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="user-options">
 							<!-- <li><a href="#">Normal Link</a></li>
 							<li><a href="#">Badge Link&nbsp;&nbsp;<span class="badge badge-important animated bounceIn">2</span></a></li> -->
-							<li class="divider"></li>                
+							<li class="divider"></li>
+							<li><a href="<?php echo site_url()?>/profile"><i class="fa fa-pencil-square-0"></i>&nbsp;&nbsp;Edit Profile</a></li>                
 							<li><a href="<?php echo site_url()?>/auth/do_logout"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Logout</a></li>
 						</ul>
 					</li>

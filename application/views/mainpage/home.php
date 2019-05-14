@@ -2,6 +2,25 @@
         <div class="content">
         <div class="row">
                 <div class="col-lg-12 text-center">
+                    <div class="col-md-12 text-center">
+                <?php $error_msg = $this->session->flashdata('error'); if(!empty($error_msg)){ ?>
+                    <div class="alert alert-block alert-danger fade in">
+                        <button data-dismiss="alert" class="close close-sm" type="button">
+                        </button>
+                        <strong>Error!</strong> <?php  echo $error_msg; ?>
+                    </div>
+                <?php } ?>
+
+                <?php $ok_msg = $this->session->flashdata('success'); if(!empty($ok_msg)){ ?>
+                    <div class="alert alert-block alert-success fade in">
+                        <button data-dismiss="alert" class="close close-sm" type="button">
+
+                        </button>
+                        <strong>Success!</strong> <?php  echo $ok_msg; ?>
+                    </div>
+                <?php } ?>
+
+            </div>
                     <?php $error_msg = $this->session->flashdata('error'); if(!empty($error_msg)){ ?>
                         <div class="alert alert-block alert-danger fade in">
                             <button data-dismiss="alert" class="close close-sm" type="button">
